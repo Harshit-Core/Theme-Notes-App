@@ -1,0 +1,332 @@
+:root {
+    --pre-winter-gray: #708090;
+    --pre-winter-blue: #4F6D8E;
+    --pre-winter-silver: #B8C5D1;
+    --pre-winter-mist: #E6E9F0;
+    --warm-cream: #ede6cb;
+    --cozy-beige: #F5F5DC;
+    --text-dark: #2C3E50;
+    --shadow-transition: rgba(112, 128, 144, 0.3);
+}
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--pre-winter-gray) 0%, var(--pre-winter-blue) 50%, var(--pre-winter-silver) 100%);
+    min-height: 100vh;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* Header Styles */
+.app-header {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: rgba(230, 233, 240, 0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px var(--shadow-transition);
+}
+
+.app-header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--autumn-brown);
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.app-header p {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Note Input Section */
+.note-input-section {
+    background: var(--warm-cream);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-warm);
+    border: 3px solid var(--autumn-gold);
+    position: relative;
+}
+
+.note-input-section::before {
+    content: "✏️";
+    background-color: #C82333 !important;
+    position: absolute;
+    top: -15px;
+    right: 20px;
+    font-size: 2rem;
+    background: var(--warm-cream);
+    padding: 8px 15px;
+}
+
+#noteInput {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.3rem;
+    color: var(--text-dark);
+    resize: vertical;
+    outline: none;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+#noteInput::placeholder {
+    color: var(--autumn-brown);
+    opacity: 0.6;
+}
+
+/* Button Styles */
+.input-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: var(--autumn-brown);
+    color: rgb(0, 0, 0);
+}
+
+.btn-primary:hover {
+    background: #9a9a9a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(169, 169, 169, 0.3);
+}
+
+.btn-secondary {
+    background: var(--autumn-gold);
+    color: var(--text-dark);
+}
+
+.btn-secondary:hover {
+    background: #9a9a9a;
+    transform: translateY(-2px);
+}
+
+/* Notes Display Section */
+.notes-section {
+    background: rgba(255, 248, 220, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow-warm);
+    border: 3px solid var(--autumn-orange);
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.notes-section h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--autumn-brown);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--autumn-gold);
+    padding-bottom: 0.5rem;
+}
+
+/* Notes Grid */
+.notes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.note-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border-left: 5px solid var(--autumn-orange);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.note-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+}
+
+.note-card::before {
+    content: "❄";
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.2rem;
+    opacity: 0.6;
+}
+
+.note-content {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    word-wrap: break-word;
+}
+
+.note-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--autumn-brown);
+    opacity: 0.7;
+}
+
+.note-date {
+    font-weight: 300;
+}
+
+.delete-btn {
+    background: #DC3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #C82333;
+    transform: scale(1.1);
+}
+
+/* Falling Leaves Animation */
+.leaves-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.leaf {
+    position: absolute;
+    font-size: 2rem;
+    animation: fall linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--autumn-brown);
+    opacity: 0.6;
+}
+
+.empty-state h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    .app-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .note-input-section,
+    .notes-section {
+        padding: 1.5rem;
+    }
+    
+    .input-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-header {
+        padding: 1.5rem 1rem;
+    }
+    
+    .app-header h1 {
+        font-size: 2rem;
+    }
+    
+    .note-input-section,
+    .notes-section {
+        padding: 1rem;
+    }
+}
+
+/* Custom Scrollbar for Notes Section */
+.notes-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.notes-section::-webkit-scrollbar-track {
+    background: var(--cozy-beige);
+    border-radius: 10px;
+}
+
+.notes-section::-webkit-scrollbar-thumb {
+    background: var(--autumn-gold);
+    border-radius: 10px;
+}
+
+.notes-section::-webkit-scrollbar-thumb:hover {
+    background: var(--autumn-brown);
+}

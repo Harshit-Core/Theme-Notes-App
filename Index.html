@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <title>Pre Winter Notes 📝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>🌫️ Pre Winter Notes</h1>
+        <p>Capture your thoughts as seasons change</p>
+    </header>
+
+    <div class="container">
+        <div class="note-input-section">
+            <textarea 
+                id="noteInput" 
+                placeholder="Write your pre-winter thoughts here... 🌫️"
+                rows="8"
+            ></textarea>
+            
+            <div class="input-actions">
+                <button id="saveBtn" class="btn btn-primary">
+                    📝 Save Note
+                </button>
+                <button id="clearBtn" class="btn btn-secondary">
+                    🗑️ Clear
+                </button>
+            </div>
+        </div>
+        <div class="notes-section">
+            <h2>Your Pre Winter Collection</h2>
+            <div id="notesList" class="notes-grid">
+            </div>
+        </div>
+    </div>
+    <div class="leaves-container" id="leavesContainer">
+    </div>
+
+    <script src="Script.js"></script>
+</body>
+</html>
