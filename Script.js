@@ -14,29 +14,46 @@ class PreWinterNotes {
    }
 
    bindEvents() {
-        const savebtn = document.getElementById('saveBtn');
-        const exportBtn = document.getElementById('exportBtn');
+        const saveBtn = document.getElementById('saveBtn');
+        const clearBtn = document.getElementById('clearBtn');
         const noteInput = document.getElementById('noteInput');
-        const clearbtn = document.getElementById('clearBtn');
 
-        savebtn.addEventListener('click', () => this.saveNote());
-        exportBtn.addEventListener('click', () => this.exportNotes());
-        clearbtn.addEventListener('click', () => this.clearAllNotes()); 
+        // Only bind if elements exist
+        if (saveBtn) {
+            saveBtn.addEventListener('click', () => this.saveNote());
+        }
+        
+        if (clearBtn) {
+            clearBtn.addEventListener('click', () => this.clearInput());
+        }
 
-                noteInput.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                this.saveNote();
-            }
-        });
+        if (noteInput) {
+            noteInput.addEventListener('keydown', (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                    this.saveNote();
+                }
+            });
 
-                noteInput.addEventListener('input', () => {
-            this.saveDraft();
-        });
+            noteInput.addEventListener('input', () => {
+                this.saveDraft();
+            });
 
-        // Clear draft when input is cleared
-        noteInput.addEventListener('input', (e) => {
-            if (!e.target.value.trim()) {
-                this.removeDraft();
+            // Clear draft when input is cleared
+            noteInput.addEventListener('input', (e) => {
+                if (!e.target.value.trim()) {
+                    this.removeDraft();
+                }
+            });
+        }
+
+        // Event delegation for delete buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-btn')) {
+                const noteId = e.target.getAttribute('data-note-id');
+                if (noteId) {
+                    console.log('Deleting note with ID:', noteId); // Debug log
+                    this.deleteNote(noteId);
+                }
             }
         });
     }
@@ -77,7 +94,13 @@ class PreWinterNotes {
 
     // Delete Note
     deleteNote(id) {
+        console.log('deleteNote called with ID:', id); // Debug log
+        console.log('Current notes before delete:', this.notes.length); // Debug log
+        
         this.notes = this.notes.filter(note => note.id !== id);
+        
+        console.log('Notes after delete:', this.notes.length); // Debug log
+        
         this.saveNotesToStorage();
         this.displayNotes();
         this.showToast('Note deleted! 💨', 'info');
@@ -102,7 +125,7 @@ class PreWinterNotes {
                 <div class="note-header">
                     <span class="note-emoji">${note.emoji}</span>
                     <span class="note-date">${this.formatDate(note.timestamp)}</span>
-                    <button class="delete-btn" onclick="preWinterNotes.deleteNote('${note.id}')">
+                    <button class="delete-btn" data-note-id="${note.id}">
                         ×
                     </button>
                 </div>
