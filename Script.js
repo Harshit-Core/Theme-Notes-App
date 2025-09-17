@@ -320,45 +320,6 @@ class PreWinterNotes {
 // Initialize the app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.preWinterNotes = new PreWinterNotes();
-    
-    // Add CSS animations for toast
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-        
-        .toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 12px 24px;
-            border-radius: 8px;
-            color: white;
-            font-weight: 500;
-            transform: translateX(100%);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            max-width: 300px;
-        }
-        
-        .toast.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        
-        .toast-success { background: var(--pre-winter-blue); }
-        .toast-warning { background: var(--pre-winter-gray); }
-        .toast-info { background: var(--pre-winter-silver); color: var(--text-dark); }
-    `;
-    document.head.appendChild(style);
 });
 
 // Keyboard Shortcuts
